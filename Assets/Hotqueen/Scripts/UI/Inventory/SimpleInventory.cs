@@ -124,6 +124,7 @@ public class SimpleInventory : MonoBehaviour
     public void RemoveItem()
     {
         slots[curSlot].ClearItem();
+        UpdateItemHolder();
     }
     public InventorySlot GetCurrentSlot()
     {

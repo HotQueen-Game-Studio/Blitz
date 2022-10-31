@@ -80,6 +80,10 @@ public class Player : Character
             {
                 character.Interacted();
             }
+            if (rb.TryGetComponent<Structure>(out Structure structure))
+            {
+                structure.Interact(this);
+            }
             // if (rb.TryGetComponent<ExitDoor>(out ExitDoor door))
             // {
             //     if (itemHolder.GetItem() != null && itemHolder.GetItem().Data.name == "Key")
