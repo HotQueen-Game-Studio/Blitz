@@ -14,35 +14,35 @@ public class Portal : MonoBehaviour
         {
             Debug.Log("Entered the portal");
             PortalHandler.Instance.CanTeleport = false;
-            DisableCinemachineSoftZone(otherRb.GetComponentInChildren<CinemachineVirtualCamera>());
-            Vector3 newPos = new Vector3();
-
-            // if (teleportX)
-            // {
-            //     newPos.x = exitPoint.transform.position.x;
-            // }
-            // if (teleportY)
-            // {
-            //     newPos.y = exitPoint.transform.position.y;
-            // }
-
-            otherRb.transform.position = newPos;
+            otherRb.transform.position = SmoothTransition(otherRb);
         }
         else
         {
-            EnableCinemachineSoftZone(otherRb.GetComponentInChildren<CinemachineVirtualCamera>());
             PortalHandler.Instance.CanTeleport = true;
         }
     }
 
-    private void DisableCinemachineSoftZone(CinemachineVirtualCamera otherCinemachine)
+    private Vector2 SmoothTransition(Rigidbody2D otherRb)
     {
-        otherCinemachine.GetCinemachineComponent<CinemachineFramingTransposer>().m_SoftZoneHeight = 0;
-        otherCinemachine.GetCinemachineComponent<CinemachineFramingTransposer>().m_SoftZoneWidth = 0;
+
+        Vector3 oldPos = otherRb.transform.position;
+        Vector3 oldCameraPos = otherRb.GetComponentInChildren<CinemachineVirtualCamera>().transform.position;
+
+        Vector3 pos = (this.transform.position - oldPos);
+        pos.y = -pos.y;
+
+        Vector3 newPos = pos + exitPoint.transform.position;
+
+        SmoothFollowTarget(otherRb.GetComponentInChildren<CinemachineVirtualCamera>(), oldCameraPos, newPos, oldPos);
+        return newPos;
     }
-    private void EnableCinemachineSoftZone(CinemachineVirtualCamera otherCinemachine)
+
+    private void SmoothFollowTarget(CinemachineVirtualCamera otherCinemachine, Vector3 oldCameraPos, Vector3 newPos, Vector3 oldPos)
     {
-        otherCinemachine.GetCinemachineComponent<CinemachineFramingTransposer>().m_SoftZoneHeight = 0.8f;
-        otherCinemachine.GetCinemachineComponent<CinemachineFramingTransposer>().m_SoftZoneWidth = 0.8f;
+        CinemachineFramingTransposer cmFramingTransposer = otherCinemachine.GetCinemachineComponent<CinemachineFramingTransposer>();
+        Vector3 pos = cmFramingTransposer.transform.position + (oldPos - oldCameraPos);
+        pos.z = -10;
+        cmFramingTransposer.ForceCameraPosition(pos, Quaternion.identity);
     }
+
 }
