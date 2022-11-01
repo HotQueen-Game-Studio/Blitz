@@ -20,7 +20,6 @@ public class Machine_Puzzle : Puzzle
 
     public override void Started()
     {
-
     }
 
     public override bool Validate<T>(T extraInfo)
@@ -31,13 +30,13 @@ public class Machine_Puzzle : Puzzle
             if (item.Data.name == key.Data.name)
             {
                 player.Inventory.RemoveItem();
-                Debug.Log("Puzzle Completed");
+                DialogueHandler.Instance.Chat(player,"Puzzle Completed");
                 Completed();
                 return true;
             }
         }
 
-        Debug.Log("Sorry maybe it´s the wrong item");
+        DialogueHandler.Instance.Chat(player,"Sorry maybe it´s the wrong item");
         return false;
     }
 }
