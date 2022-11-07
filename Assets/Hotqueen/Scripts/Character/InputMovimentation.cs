@@ -8,10 +8,10 @@ using Random = UnityEngine.Random;
 public class InputMovimentation : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private Animator playerAnimator;
     [SerializeField] private AudioClip[] stepClips;
+    [SerializeField] private bool invertX;
+    [SerializeField] private bool invertY;
     private float currentStepTempo;
-    [SerializeField] Transform sight;
     BlitzInputs blitzInputs;
     Rigidbody2D rb;
     //MOVEMENT
@@ -36,7 +36,13 @@ public class InputMovimentation : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move(blitzInputs.Player.Move.ReadValue<Vector2>(), speed);
+        Vector2 direction = new Vector2();
+        Vector2 input = blitzInputs.Player.Move.ReadValue<Vector2>();
+
+        direction.y = invertY ? -input.y : input.y;
+        direction.x = invertX ? -input.x : input.x;
+        
+        Move(direction, speed);
         // Rotate(blitzInputs.Player.Look.ReadValue<Vector2>());
     }
     void Update()
@@ -51,25 +57,11 @@ public class InputMovimentation : MonoBehaviour
                 currentStepTempo = speed / 8;
             }
         }
-
-        playerAnimator.SetFloat("MoveX", rb.velocity.x);
-        playerAnimator.SetFloat("MoveY", rb.velocity.y);
     }
 
-    // private void Rotate(Vector2 deltaMouse)
-    // {
-
-    //     Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //     Vector2 targetDir = mousePos - (Vector2)this.transform.position;
-
-    //     float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg;
-
-    //     sight.eulerAngles = new Vector3(0, 0, angle - 90);
-
-    // }
 
     private void Move(Vector2 direction, float speed)
     {
-        rb.velocity = direction * speed; //((sight.up * direction.y) + (sight.right * direction.x)) * speed;
+        rb.velocity = direction * speed;
     }
 }

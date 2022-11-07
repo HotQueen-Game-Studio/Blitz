@@ -51,7 +51,7 @@ public class Player : Character
 
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
 
-        Aim.transform.localPosition = aimDirection;
+        Aim.transform.localPosition = aimDirection*1;
         Aim.transform.eulerAngles = new Vector3(0, 0, angle);
     }
 
@@ -95,17 +95,6 @@ public class Player : Character
             {
                 structure.Interact(this);
             }
-            // if (rb.TryGetComponent<ExitDoor>(out ExitDoor door))
-            // {
-            //     if (itemHolder.GetItem() != null && itemHolder.GetItem().Data.name == "Key")
-            //     {
-            //         door.Open();
-            //     }
-            //     else
-            //     {
-            //         DialogueHandler.Instance.Chat(this, "I don´t have the key yet.");
-            //     }
-            // }
         }
     }
     private void DropItem()

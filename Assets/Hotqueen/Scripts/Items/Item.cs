@@ -44,4 +44,12 @@ public class Item : MonoBehaviour
         Debug.Log("Unequiping Item");
         owner = null;
     }
+
+    void Update()
+    {
+        // if (owner && this.gameObject.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
+        // {
+        //     rb.velocity = (owner.GetComponent<Player>().ItemHolder.transform.position - this.transform.position) * 10;
+        // }
+    }
 }
