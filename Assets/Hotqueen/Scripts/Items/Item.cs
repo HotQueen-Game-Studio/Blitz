@@ -19,8 +19,9 @@ public class Item : MonoBehaviour
             {
                 character.GetComponent<Player>().Inventory.AddItemInAvailableSlot(Data);
             }
-            Destroy(this.gameObject);
         }
+
+        Destroy(this.gameObject);
     }
     public virtual void Drop()
     {

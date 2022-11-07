@@ -4,12 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Player : Character
 {
     public BlitzInputs blitzInputs { private set; get; }
     [SerializeField] private SimpleInventory inventory;
-    [SerializeField] private Animator playerAnimator;
+    [SerializeField] private Animator animator;
     [SerializeField] private ItemHolder itemHolder;
+
+
+    private Rigidbody2D rb;
     public ItemHolder ItemHolder { get { return itemHolder; } }
 
     public SimpleInventory Inventory { get { return inventory; } }
@@ -28,9 +32,15 @@ public class Player : Character
         // };
     }
 
+    private void Start()
+    {
+        rb = this.GetComponent<Rigidbody2D>();
+    }
+
     private void Update()
     {
         RotateAim();
+        animator.SetFloat("rbVelMag", rb.velocity.SqrMagnitude());
     }
 
     private void RotateAim()
@@ -61,6 +71,7 @@ public class Player : Character
         {
             Debug.Log("Using Item:" + inventory.GetCurrentSlot().data.name);
             itemHolder.animator.Play("MeleeAttack");
+            itemHolder.GetItem().Use();
         }
     }
 
@@ -103,7 +114,7 @@ public class Player : Character
         if (slot && slot.data != null)
         {
             GameObject pref = Resources.Load<GameObject>("Prefabs/Items/" + slot.data.name);
-            Item item = Instantiate(pref, this.transform.position, Quaternion.identity).GetComponent<Item>();
+            Item item = Instantiate(pref, itemHolder.transform.position, Quaternion.identity).GetComponent<Item>();
             item.Drop();
             inventory.RemoveItem();
         }
@@ -121,4 +132,5 @@ public class Player : Character
         Gizmos.color = Color.green;
         Gizmos.DrawRay(this.transform.position, direction * interactRange);
     }
+
 }

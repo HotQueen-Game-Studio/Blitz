@@ -5,6 +5,7 @@ using UnityEngine;
 public class DialogueHandler
 {
     private DialogueBox dialoguePref;
+    private DialogueBox dialogueInst = null;
 
     private static DialogueHandler instance = null;
     public static DialogueHandler Instance
@@ -29,11 +30,9 @@ public class DialogueHandler
     {
         //for each message
         //display on character´s position
-        DialogueBox dialogueInst = character.GetComponentInChildren<DialogueBox>();
-        Transform dialoguePoint = character.transform.Find("DialoguePoint");
-        
         if (!dialogueInst)
         {
+            Transform dialoguePoint = character.transform.Find("DialoguePoint");
             if (dialoguePoint != null)
             {
                 dialogueInst = GameObject.Instantiate<DialogueBox>(dialoguePref, dialoguePoint.position, dialoguePoint.rotation, dialoguePoint);

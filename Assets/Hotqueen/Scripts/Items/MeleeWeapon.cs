@@ -22,10 +22,17 @@ public class MeleeWeapon : Weapon
             }
             //hit target
             Rigidbody2D rb2d = hit.collider.attachedRigidbody;
-            if (rb2d && rb2d.TryGetComponent<Character>(out Character character) && owner != character)
+            if (rb2d)
             {
-                character.Attributes.Health -= damage;
-                Instantiate(character.HurtParticleEffect, hit.point, Quaternion.identity);
+                if (rb2d.TryGetComponent<Character>(out Character character) && owner != character)
+                {
+                    character.Attributes.Health -= damage;
+                    Instantiate(character.HurtParticleEffect, hit.point, Quaternion.identity);
+                }
+                if (rb2d.TryGetComponent<Structure>(out Structure structure))
+                {
+                    structure.Resistance -= damage;
+                }
             }
         }
     }

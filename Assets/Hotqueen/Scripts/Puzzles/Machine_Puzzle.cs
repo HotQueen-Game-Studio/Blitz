@@ -15,7 +15,13 @@ public class Machine_Puzzle : Puzzle
 
     public override void Completed()
     {
-        GameObject.Instantiate<GameObject>(reward, new Vector3(), Quaternion.identity);
+        if (!completed)
+        {
+            completed = true;
+            // GameObject.Instantiate<GameObject>(reward, new Vector3(), Quaternion.identity);
+            Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            DialogueHandler.Instance.Chat(player, "Puzzle Completed");
+        }
     }
 
     public override void Started()
@@ -27,16 +33,26 @@ public class Machine_Puzzle : Puzzle
         if (extraInfo.gameObject.TryGetComponent<Player>(out Player player))
         {
             Item item = player.ItemHolder.GetItem();
-            if (item.Data.name == key.Data.name)
+            if (item && item.Data.name == key.Data.name)
             {
                 player.Inventory.RemoveItem();
-                DialogueHandler.Instance.Chat(player,"Puzzle Completed");
+                Completed();
+                return true;
+            }
+            else
+            {
+                DialogueHandler.Instance.Chat(player, "Maybe it´s the wrong item");
+            }
+        }
+        else if (extraInfo.gameObject.TryGetComponent<Machine>(out Machine machine))
+        {
+            if (machine.Resistance <= 0)
+            {
                 Completed();
                 return true;
             }
         }
 
-        DialogueHandler.Instance.Chat(player,"Sorry maybe it´s the wrong item");
         return false;
     }
 }

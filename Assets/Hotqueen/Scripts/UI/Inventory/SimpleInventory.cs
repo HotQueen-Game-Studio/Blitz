@@ -31,36 +31,6 @@ public class SimpleInventory : MonoBehaviour
         ChangeSlot(0);
     }
 
-    // void Update()
-    // {
-    //     UIRaycast uIRaycast = new UIRaycast(LayerMask.NameToLayer("ItemSlot"));
-
-
-    //     Vector2 mousePos = Input.mousePosition;
-    //     ItemInfoUI instance = FindObjectOfType<ItemInfoUI>();
-
-    //     if (uIRaycast.IsPointerOverUIElement())
-    //     {
-    //         if (uIRaycast.GetEventSystemRaycastResult().gameObject.TryGetComponent<InventorySlot>(out InventorySlot inventorySlot) && inventorySlot.data != null)
-    //         {
-    //             if (!instance && inventorySlot.data != null)
-    //             {
-    //                 Canvas canvas = GetComponentInParent<Canvas>();
-    //                 instance = Instantiate(itemInforUI, mousePos, Quaternion.identity);
-    //                 instance.Name.text = inventorySlot.data.name;
-    //                 instance.Description.text = inventorySlot.data.description;
-    //                 instance.transform.parent = canvas.transform;
-    //             }
-
-    //             instance.transform.position = mousePos;
-    //         }
-    //     }
-    //     else if (instance)
-    //     {
-    //         Destroy(instance.gameObject);
-    //     }
-    // }
-
     private void ChangeSlot(float v)
     {
         slots[curSlot].DisableHighlight();
