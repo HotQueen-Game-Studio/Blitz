@@ -86,7 +86,7 @@ public partial class @BlitzInputs : IInputActionCollection2, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""54a6ba78-7e91-4370-8709-80e348270730"",
                     ""expectedControlType"": ""Axis"",
-                    ""processors"": ""Normalize(min=-1,max=1)"",
+                    ""processors"": ""Clamp(min=-1,max=1)"",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 }

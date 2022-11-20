@@ -10,6 +10,7 @@ public class Player : Character
     public BlitzInputs blitzInputs { private set; get; }
     [SerializeField] private SimpleInventory inventory;
     [SerializeField] private Animator animator;
+    [SerializeField] private Animator aimAnimator;
     [SerializeField] private ItemHolder itemHolder;
 
 
@@ -51,7 +52,7 @@ public class Player : Character
 
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
 
-        Aim.transform.localPosition = aimDirection*1;
+        Aim.transform.localPosition = aimDirection * 1;
         Aim.transform.eulerAngles = new Vector3(0, 0, angle);
     }
 
@@ -73,7 +74,9 @@ public class Player : Character
             itemHolder.animator.Play("MeleeAttack");
             itemHolder.GetItem().Use();
         }
+        AnimateAim();
     }
+
 
     public override void Interact()
     {
@@ -96,6 +99,7 @@ public class Player : Character
                 structure.Interact(this);
             }
         }
+        AnimateAim();
     }
     private void DropItem()
     {
@@ -114,6 +118,11 @@ public class Player : Character
         Debug.Log("Being Interacted");
     }
 
+
+    private void AnimateAim()
+    {
+        aimAnimator.Play("AimClick");
+    }
     private void OnDrawGizmos()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

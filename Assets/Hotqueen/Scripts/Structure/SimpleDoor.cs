@@ -11,22 +11,29 @@ public class SimpleDoor : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (!locked)
+        if (IsCharacter(other.collider))
             OpenDoor();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        OpenDoor();
+        if (IsCharacter(other))
+        {
+            OpenDoor();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        CloseDoor();
+        if (IsCharacter(other))
+        {
+            CloseDoor();
+        }
     }
 
     public void CloseDoor()
     {
+        Debug.Log("Closing door");
         doorOpened.gameObject.SetActive(false);
         doorClosed.gameObject.SetActive(true);
     }
@@ -34,5 +41,9 @@ public class SimpleDoor : MonoBehaviour
     {
         doorOpened.gameObject.SetActive(true);
         doorClosed.gameObject.SetActive(false);
+    }
+    public bool IsCharacter(Collider2D col)
+    {
+        return col.attachedRigidbody && col.attachedRigidbody.GetComponent<Character>();
     }
 }
