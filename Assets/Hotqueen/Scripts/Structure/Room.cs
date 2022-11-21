@@ -5,9 +5,18 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
+    [SerializeField] private bool disableOnAwake = true;    
+    void Awake()
+    {
+        if(disableOnAwake){
+            GameManager.Instance.AddRoom(this);
+            this.transform.gameObject.SetActive(false);
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (IsItem(other, out Item item))
+        if (Collider2DValidation.IsItem(other, out Item item))
         {
             item.transform.parent = this.transform;
         }
@@ -15,19 +24,9 @@ public class Room : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (IsItem(other, out Item item))
+        if (Collider2DValidation.IsItem(other, out Item item))
         {
             item.transform.parent = null;
         }
-    }
-
-    public bool IsItem(Collider2D col)
-    {
-        return IsItem(col, out Item item);
-    }
-    public bool IsItem(Collider2D col, out Item item)
-    {
-        item = null;
-        return col.attachedRigidbody && col.attachedRigidbody.TryGetComponent<Item>(out item);
     }
 }

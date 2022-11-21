@@ -17,8 +17,8 @@ public class MeleeWeapon : Weapon
             //Screen shake if owner is player
             if (owner is Player)
             {
-                CinemachineShake cinemachineShake = owner.GetComponentInChildren<CinemachineShake>();
-                cinemachineShake.ShakeCamera(5, 1);
+                CameraSettings cameraSettings = FindObjectOfType<CameraSettings>();
+                cameraSettings.ShakeCamera(5, 2);
             }
             //hit target
             Rigidbody2D rb2d = hit.collider.attachedRigidbody;

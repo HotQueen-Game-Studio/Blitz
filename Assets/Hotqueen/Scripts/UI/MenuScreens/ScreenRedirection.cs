@@ -7,6 +7,7 @@ public class ScreenRedirection : MonoBehaviour
 
     public void GoToScene(string scene)
     {
-        SceneManager.LoadScene(scene);
+        GameManager.Instance.LoadSceneAdditive(scene);
+        GameManager.Instance.SwitchRoom(0);
     }
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using Cinemachine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : Character
 {
@@ -12,7 +12,6 @@ public class Player : Character
     [SerializeField] private Animator animator;
     [SerializeField] private Animator aimAnimator;
     [SerializeField] private ItemHolder itemHolder;
-
 
     private Rigidbody2D rb;
     public ItemHolder ItemHolder { get { return itemHolder; } }
@@ -118,10 +117,17 @@ public class Player : Character
         Debug.Log("Being Interacted");
     }
 
-
     private void AnimateAim()
     {
         aimAnimator.Play("AimClick");
+    }
+    public void EnableInventory()
+    {
+        Inventory.gameObject.SetActive(true);
+    }
+    public void DisableInventory()
+    {
+        Inventory.gameObject.SetActive(false);
     }
     private void OnDrawGizmos()
     {
