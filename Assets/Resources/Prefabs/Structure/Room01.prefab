@@ -64,9 +64,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1973275037, guid: 845c7cabb3d4fa64a8280184ea1b9b05, type: 3}
+      propertyPath: disableOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604549741510808072, guid: 845c7cabb3d4fa64a8280184ea1b9b05, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 8b78c9512f5db6047bf915c847765b5d, type: 2}
+    - target: {fileID: 6369774075632118215, guid: 845c7cabb3d4fa64a8280184ea1b9b05, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8011780783985374528, guid: 845c7cabb3d4fa64a8280184ea1b9b05, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8011780784282675229, guid: 845c7cabb3d4fa64a8280184ea1b9b05, type: 3}
       propertyPath: m_Name
@@ -86,7 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8011780784282675231, guid: 845c7cabb3d4fa64a8280184ea1b9b05, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8011780784282675231, guid: 845c7cabb3d4fa64a8280184ea1b9b05, type: 3}
       propertyPath: m_LocalRotation.w
