@@ -33,20 +33,7 @@ public class SimpleInventory : MonoBehaviour
 
     private void ChangeSlot(float v)
     {
-        slots[curSlot].DisableHighlight();
-
-        curSlot += (int)v;
-        if (curSlot >= slots.Length - 1)
-        {
-            curSlot = slots.Length - 1;
-        }
-        else if (curSlot <= 0)
-        {
-            curSlot = 0;
-        }
-
-        slots[curSlot].EnableHighlight();
-        UpdateItemHolder();
+        ChangeSlot((int)v);
     }
 
     public void UpdateItemHolder()
@@ -67,13 +54,16 @@ public class SimpleInventory : MonoBehaviour
     private void ChangeSlot(int v)
     {
         slots[curSlot].DisableHighlight();
-
-        if (curSlot >= slots.Length || curSlot < 0)
+        curSlot += v;
+        if (curSlot >= slots.Length)
         {
-            return;
+            curSlot = 0;
+        }
+        else if (curSlot < 0)
+        {
+            curSlot = slots.Length-1;
         }
 
-        curSlot = v;
         slots[curSlot].EnableHighlight();
         UpdateItemHolder();
     }
@@ -89,7 +79,7 @@ public class SimpleInventory : MonoBehaviour
                 return;
             }
         }
-        Debug.Log("No space left");
+        // Debug.Log("No space left");
     }
     public void RemoveItem()
     {

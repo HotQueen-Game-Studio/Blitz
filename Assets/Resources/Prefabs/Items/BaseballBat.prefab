@@ -161,7 +161,7 @@ MonoBehaviour:
   data:
     name: BaseballBat
     description: Very good for dialogues
-    spt: {fileID: 21300000, guid: feb903ff56df48b4bbbeececd53774d2, type: 3}
+    spt: {fileID: 21300000, guid: 607903022d5a7eb43b1f75053f61912c, type: 3}
   pickClip: {fileID: 0}
   itemAudioSource: {fileID: 668707992731121230}
   damage: 1

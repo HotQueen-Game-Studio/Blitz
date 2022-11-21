@@ -35,6 +35,7 @@ public class Silhouette : NPC
     {
         if (twisted && other.collider.attachedRigidbody && other.collider.attachedRigidbody.GetComponent<Player>())
         {
+            GameManager.Instance.GetCameraSettings().FollowAndTargetCredits();
             GameManager.Instance.GetScreenRedirection().GoToScreen(GameManager.Instance.GetCreditsUI());
         }
     }
