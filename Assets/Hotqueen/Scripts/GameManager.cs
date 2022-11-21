@@ -33,6 +33,25 @@ public class GameManager
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 
+    #region MainUI
+    public CameraSettings GetCameraSettings()
+    {
+        return GameObject.FindObjectOfType<CameraSettings>();
+    }
+    public ScreenRedirection GetScreenRedirection()
+    {
+        return GameObject.FindObjectOfType<ScreenRedirection>();
+    }
+    public GameObject GetMainUI()
+    {
+        return GameObject.Find("MainUI");
+    }
+    public GameObject GetCreditsUI()
+    {
+        return GameObject.Find("CreditsUI");
+    }
+    #endregion
+
     #region RoomManager
     public async void SwitchRoom(int direction)
     {
@@ -40,8 +59,6 @@ public class GameManager
         {
             await Task.Yield();
         }
-
-
         if (currentRoom + direction < rooms.Count)
         {
             SetRoomActive(currentRoom, false);
@@ -56,6 +73,7 @@ public class GameManager
     }
     public void SetRoomActive(int index, bool isActive)
     {
+        Debug.Log("set active");
         Room room = rooms[index];
         room.gameObject.SetActive(isActive);
     }

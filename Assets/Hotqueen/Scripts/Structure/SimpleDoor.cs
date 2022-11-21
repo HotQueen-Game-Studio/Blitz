@@ -1,10 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SimpleDoor : MonoBehaviour
 {
-    public bool locked = false;
+    [SerializeField] private bool locked = false;
+    public bool Locked
+    {
+        get
+        {
+            return locked;
+        }
+        set
+        {
+            locked = value;
+            if (this.gameObject.TryGetComponent<NavMeshObstacle>(out NavMeshObstacle navMeshObstacle))
+            {
+                navMeshObstacle.enabled = !locked;
+            }
+        }
+    }
     [SerializeField] private SpriteRenderer doorClosed;
     [SerializeField] private SpriteRenderer doorOpened;
 
@@ -39,8 +55,11 @@ public class SimpleDoor : MonoBehaviour
     }
     public void OpenDoor()
     {
-        doorOpened.gameObject.SetActive(true);
-        doorClosed.gameObject.SetActive(false);
+        if (!locked)
+        {
+            doorOpened.gameObject.SetActive(true);
+            doorClosed.gameObject.SetActive(false);
+        }
     }
 
 }

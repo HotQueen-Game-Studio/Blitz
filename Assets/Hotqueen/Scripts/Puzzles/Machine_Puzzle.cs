@@ -5,12 +5,14 @@ using UnityEngine;
 public class Machine_Puzzle : Puzzle
 {
     [SerializeField] private Item key;
-    [SerializeField] private GameObject reward;
+    [SerializeField] private SimpleDoor door;
+    [SerializeField] private Silhouette silhouette;
 
-    public Machine_Puzzle(Item key, GameObject reward)
+    public Machine_Puzzle(Item key, SimpleDoor door, Silhouette silhouette)
     {
         this.key = key;
-        this.reward = reward;
+        this.door = door;
+        this.silhouette = silhouette;
     }
 
     public override void Completed()
@@ -18,9 +20,9 @@ public class Machine_Puzzle : Puzzle
         if (!completed)
         {
             completed = true;
-            // GameObject.Instantiate<GameObject>(reward, new Vector3(), Quaternion.identity);
             Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-            DialogueHandler.Instance.Chat(player, "Puzzle Completed");
+            door.Locked = false;
+            DialogueHandler.Instance.Chat(player, "Did i unlocked something?");
         }
     }
 
@@ -48,6 +50,7 @@ public class Machine_Puzzle : Puzzle
         {
             if (machine.Resistance <= 0)
             {
+                silhouette.twisted = true;
                 Completed();
                 return true;
             }

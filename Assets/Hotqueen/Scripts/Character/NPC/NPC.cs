@@ -26,7 +26,7 @@ public class NPC : Character
 
     public override void Attack()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(this.transform.position, 1, movimentation.agent.destination - this.transform.position, attackRange);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(this.transform.position, attackRange, this.transform.forward);
         foreach (RaycastHit2D hit in hits)
         {
             Rigidbody2D rb2d = hit.collider.attachedRigidbody;
@@ -46,5 +46,10 @@ public class NPC : Character
     public override void Interacted()
     {
 
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(this.transform.position, attackRange);
     }
 }

@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
-    [SerializeField] private bool disableOnAwake = true;    
+    [SerializeField] private bool disableOnAwake = true;
     void Awake()
     {
-        if(disableOnAwake){
-            GameManager.Instance.AddRoom(this);
+        GameManager.Instance.AddRoom(this);
+        
+        if (disableOnAwake)
+        {
             this.transform.gameObject.SetActive(false);
         }
     }

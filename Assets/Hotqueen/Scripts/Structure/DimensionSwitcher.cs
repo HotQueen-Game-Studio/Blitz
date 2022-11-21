@@ -8,7 +8,7 @@ public class DimensionSwitcher : Structure
 
     public override void Interact(Character character)
     {
-        GameManager.Instance.SwitchRoom(+1);
+        GameManager.Instance.SwitchRoom(1);
     }
 
     protected override void Interact()
