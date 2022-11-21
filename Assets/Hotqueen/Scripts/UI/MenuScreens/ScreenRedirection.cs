@@ -10,6 +10,10 @@ public class ScreenRedirection : MonoBehaviour
         GameManager.Instance.LoadSceneAdditive(scene);
         GameManager.Instance.SwitchRoom(0);
     }
+    public void Reload()
+    {
+        GameManager.Instance.ReloadGame();
+    }
     public void GoToScreen(GameObject screen)
     {
         screen.gameObject.SetActive(true);

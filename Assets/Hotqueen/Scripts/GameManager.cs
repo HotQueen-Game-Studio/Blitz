@@ -32,7 +32,10 @@ public class GameManager
     {
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
-
+    public void ReloadGame()
+    {
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
+    }
     #region MainUI
     public CameraSettings GetCameraSettings()
     {
@@ -73,7 +76,7 @@ public class GameManager
     }
     public void SetRoomActive(int index, bool isActive)
     {
-        Debug.Log("set active");
+        // Debug.Log("set active");
         Room room = rooms[index];
         room.gameObject.SetActive(isActive);
     }

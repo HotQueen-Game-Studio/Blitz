@@ -37,6 +37,7 @@ public class Silhouette : NPC
         {
             GameManager.Instance.GetCameraSettings().FollowAndTargetCredits();
             GameManager.Instance.GetScreenRedirection().GoToScreen(GameManager.Instance.GetCreditsUI());
+            Destroy(this.gameObject);
         }
     }
 }

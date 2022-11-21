@@ -21,6 +21,7 @@ public class Killer : State<Silhouette>
     public void Enter(Silhouette character)
     {
         character.SwitchToRedSilhuette();
+        character.movimentation.agent.speed *= 2;
     }
 
     public void Execute(Silhouette character)

@@ -15,6 +15,7 @@ public class SimpleDoor : MonoBehaviour
         set
         {
             locked = value;
+            // Debug.Log("locke " + locked);
             if (this.gameObject.TryGetComponent<NavMeshObstacle>(out NavMeshObstacle navMeshObstacle))
             {
                 navMeshObstacle.enabled = !locked;
@@ -49,13 +50,13 @@ public class SimpleDoor : MonoBehaviour
 
     public void CloseDoor()
     {
-        Debug.Log("Closing door");
+        // Debug.Log("Closing door");
         doorOpened.gameObject.SetActive(false);
         doorClosed.gameObject.SetActive(true);
     }
     public void OpenDoor()
     {
-        if (!locked)
+        if (locked == false)
         {
             doorOpened.gameObject.SetActive(true);
             doorClosed.gameObject.SetActive(false);

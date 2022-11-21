@@ -24,7 +24,7 @@ public class Machine : Structure
 
     public override void Interact(Character character)
     {
-        if (machine_Puzzle.Validate(character))
+        if (!machine_Puzzle.completed && machine_Puzzle.Validate(character))
         {
             chip.enabled = true;
         }
