@@ -41,7 +41,7 @@ public class Item : MonoBehaviour
 
     public virtual void UnequipItem()
     {
-        Debug.Log("Unequiping Item");
+        // Debug.Log("Unequiping Item");
         owner = null;
     }
 

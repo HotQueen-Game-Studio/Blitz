@@ -80,7 +80,7 @@ public class Player : Character
         if (inventory.gameObject.activeInHierarchy && inventory.enabled && inventory.GetCurrentSlot().data != null)
         {
             Debug.Log("Using Item:" + inventory.GetCurrentSlot().data.name);
-            itemHolder.animator.Play("MeleeAttack");
+            // itemHolder.animator.Play("MeleeAttack");
             itemHolder.GetItem().Use();
         }
         AnimateAim();

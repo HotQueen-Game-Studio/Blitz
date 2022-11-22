@@ -36,10 +36,11 @@ public class Frightened : State<Silhouette>
 
     public void Execute(Silhouette character)
     {
-
-        if (character.twisted)
+        Player player = GameObject.FindObjectOfType<Player>();
+        Item item = player.ItemHolder.GetItem();
+        if (item is not MeleeWeapon)
         {
-            character.stateMachine.ChangeState(Killer.Instance);
+            character.stateMachine.ChangeState(Idle.Instance);
         }
 
         if (Vector2.Distance(GameObject.FindObjectOfType<Player>().transform.position, character.transform.position) <= distanceFromPlayer)
