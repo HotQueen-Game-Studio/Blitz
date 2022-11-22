@@ -53,6 +53,16 @@ public class Player : Character
 
         Aim.transform.localPosition = aimDirection * 1;
         Aim.transform.eulerAngles = new Vector3(0, 0, angle);
+        
+        if (Aim.transform.rotation.z > 0.5f || Aim.transform.rotation.z < -0.5f)
+        {
+            
+            itemHolder.transform.localScale = new Vector3(1, -1, 1);
+        }
+        else
+        {   
+            itemHolder.transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
     private void OnEnable()
@@ -67,7 +77,7 @@ public class Player : Character
 
     public override void Attack()
     {
-        if (inventory && inventory.GetCurrentSlot().data != null)
+        if (inventory.gameObject.activeInHierarchy && inventory.enabled && inventory.GetCurrentSlot().data != null)
         {
             Debug.Log("Using Item:" + inventory.GetCurrentSlot().data.name);
             itemHolder.animator.Play("MeleeAttack");

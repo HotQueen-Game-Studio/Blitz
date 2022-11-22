@@ -35,7 +35,9 @@ public class GameManager
     public void ReloadGame()
     {
         SceneManager.LoadScene(0, LoadSceneMode.Single);
+        instance = null;
     }
+
     #region MainUI
     public CameraSettings GetCameraSettings()
     {
@@ -58,22 +60,31 @@ public class GameManager
     #region RoomManager
     public async void SwitchRoom(int direction)
     {
+        //if there is no room in list rooms 
+        //wait until room is initialized
         while (rooms == null || rooms.Count < 1)
         {
             await Task.Yield();
         }
-        if (currentRoom + direction < rooms.Count)
+
+        //deactivate current room
+        SetRoomActive(currentRoom, false);
+
+        currentRoom += direction;
+        Debug.Log("CurrentRoom index " + currentRoom);
+
+        if (currentRoom > rooms.Count - 1)
         {
-            SetRoomActive(currentRoom, false);
-            SetRoomActive(currentRoom += direction, true);
-        }
-        else
-        {
-            SetRoomActive(currentRoom, false);
             currentRoom = 0;
-            SwitchRoom(0);
         }
+        else if (currentRoom < 0)
+        {
+            currentRoom = rooms.Count - 1;
+        }
+
+        SetRoomActive(currentRoom, true);
     }
+
     public void SetRoomActive(int index, bool isActive)
     {
         // Debug.Log("set active");
@@ -86,6 +97,7 @@ public class GameManager
         if (room != null)
             rooms.Add(room);
     }
+
     #endregion
 
 

@@ -25,7 +25,7 @@ public class SafeZone : MonoBehaviour
         {
             Player player = GameObject.FindObjectOfType<Player>();
             cameraSettings.FollowAndTargetPlayer();
-            silhouetteInstance = Instantiate<Silhouette>(silhouettePrefab, GetRandomPosition(player.transform.position), Quaternion.identity);
+            silhouetteInstance = Instantiate<Silhouette>(silhouettePrefab, Vector3.zero, Quaternion.identity);
             silhouetteInstance.twisted = true;
         }
     }

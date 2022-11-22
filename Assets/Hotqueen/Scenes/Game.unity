@@ -549,8 +549,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1590356400
-BoxCollider2D:
+--- !u!70 &1590356400
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -562,19 +562,9 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.023117542, y: 0.011558533}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.67, y: 1.76}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.8494196, y: 1.8091202}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 3.12, y: 2.25}
+  m_Direction: 1
 --- !u!1 &1593800531
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,6 +832,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2844373226283694717, guid: 4320ad2ee2d67324d923d918c31db518, type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 2844373226283694719, guid: 4320ad2ee2d67324d923d918c31db518, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -924,7 +918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2844373227210798187, guid: 4320ad2ee2d67324d923d918c31db518, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2844373227210798189, guid: 4320ad2ee2d67324d923d918c31db518, type: 3}
       propertyPath: m_Layer
@@ -949,6 +943,10 @@ PrefabInstance:
     - target: {fileID: 2844373227880589569, guid: 4320ad2ee2d67324d923d918c31db518, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844373227880589599, guid: 4320ad2ee2d67324d923d918c31db518, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2844373228120934399, guid: 4320ad2ee2d67324d923d918c31db518, type: 3}
       propertyPath: m_Layer
@@ -1053,6 +1051,10 @@ PrefabInstance:
     - target: {fileID: 402929487859197294, guid: 1940504d0d251774bae16b6a61c8d180, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 402929487859197296, guid: 1940504d0d251774bae16b6a61c8d180, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 402929488101575568, guid: 1940504d0d251774bae16b6a61c8d180, type: 3}
       propertyPath: m_Layer

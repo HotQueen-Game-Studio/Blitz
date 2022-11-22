@@ -16,15 +16,20 @@ public class DimensionSwitcher : Structure
 
     protected override void Interact()
     {
-        throw new System.NotImplementedException();
+        // throw new System.NotImplementedException();
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        GFX.sprite = pressedSprite;
+        if (other.attachedRigidbody && other.attachedRigidbody.GetComponent<Player>())
+            GFX.sprite = pressedSprite;
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        GFX.sprite = defaultSprite;
-        GameManager.Instance.SwitchRoom(1);
+        if (other.attachedRigidbody && other.attachedRigidbody.GetComponent<Player>())
+        {
+            GFX.sprite = defaultSprite;
+            GameManager.Instance.SwitchRoom(1);
+        }
     }
 }

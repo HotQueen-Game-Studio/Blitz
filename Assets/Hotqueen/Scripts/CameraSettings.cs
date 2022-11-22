@@ -27,8 +27,8 @@ public class CameraSettings : MonoBehaviour
     public void FollowAndTargetPlayer()
     {
         Player player = Transform.FindObjectOfType<Player>();
-        LookAt(player.transform);
-        FollowTarget(player.transform);
+        LookAt(player.transform.Find("Sight/Offset"));
+        FollowTarget(player.transform.Find("Sight/Offset"));
     }
 
     public void FollowAndTargetCredits()

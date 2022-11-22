@@ -43,7 +43,7 @@ public class SimpleInventory : MonoBehaviour
 
         if (slots[curSlot].data != null)
         {
-            GameObject itemPrefab = Instantiate(Resources.Load<GameObject>("Prefabs/Items/" + slots[curSlot].data.name), itemHolder.transform.position, Quaternion.identity, itemHolder.transform);
+            GameObject itemPrefab = Instantiate(Resources.Load<GameObject>("Prefabs/Items/" + slots[curSlot].data.name), itemHolder.transform.position, new Quaternion(), itemHolder.transform);
             Item item = itemPrefab.GetComponent<Item>();
             item.Equip(player);
             Rigidbody2D itemrb = item.GetComponent<Rigidbody2D>();
@@ -61,7 +61,7 @@ public class SimpleInventory : MonoBehaviour
         }
         else if (curSlot < 0)
         {
-            curSlot = slots.Length-1;
+            curSlot = slots.Length - 1;
         }
 
         slots[curSlot].EnableHighlight();
