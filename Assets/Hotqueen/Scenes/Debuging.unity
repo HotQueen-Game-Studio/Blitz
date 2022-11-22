@@ -879,6 +879,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Silhouette
       objectReference: {fileID: 0}
+    - target: {fileID: 5509507178126545017, guid: 90c156a6208c5b444aff1311d8e657e2, type: 3}
+      propertyPath: twisted
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509507178126545019, guid: 90c156a6208c5b444aff1311d8e657e2, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90c156a6208c5b444aff1311d8e657e2, type: 3}
 --- !u!1 &1894691182
