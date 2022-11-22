@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room
       objectReference: {fileID: 0}
+    - target: {fileID: 8011780784282675229, guid: 845c7cabb3d4fa64a8280184ea1b9b05, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8011780784282675231, guid: 845c7cabb3d4fa64a8280184ea1b9b05, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1346,6 +1350,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4772470405504314334, guid: 1940504d0d251774bae16b6a61c8d180, type: 3}
+      propertyPath: mail
+      value: 
+      objectReference: {fileID: 4575982930670356338, guid: 8753052084db857418eedeaf03bde14d, type: 3}
     - target: {fileID: 4772470405504314334, guid: 1940504d0d251774bae16b6a61c8d180, type: 3}
       propertyPath: deadBirdInWorld
       value: 
