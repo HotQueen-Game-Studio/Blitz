@@ -18,7 +18,7 @@ public class Silhouette : NPC
         // base.Awake();
         stateMachine = new StateMachine<Silhouette>(this, Idle.Instance, SilhouetteGlobalState.Instance);
         Attributes.HealthReduced += TwistSilhouette;
-        mail_Puzzle = new Mail_Puzzle(mail,deadBirdInWorld);
+        mail_Puzzle = new Mail_Puzzle(mail, deadBirdInWorld);
     }
 
     private void TwistSilhouette(int reduced, int normal)
@@ -39,17 +39,19 @@ public class Silhouette : NPC
         animator.SetFloat("rbVelMag", movimentation.agent.velocity.magnitude);
         stateMachine.Update();
     }
+
     public void SwitchToRedSilhuette()
     {
         GFX.sprite = RedSilhouette;
         GFX.color = Color.red;
     }
+
     void OnCollisionEnter2D(Collision2D other)
     {
         if (twisted && other.collider.attachedRigidbody && other.collider.attachedRigidbody.GetComponent<Player>())
         {
             GameManager.Instance.GetCameraSettings().FollowAndTargetCredits();
-            GameManager.Instance.GetScreenRedirection().GoToScreen(GameManager.Instance.GetCreditsUI());
+            ScreenRedirection.GoToScreen(GameManager.Instance.GetCreditsUI());
             Destroy(this.gameObject);
         }
     }

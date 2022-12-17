@@ -23,6 +23,7 @@ public class GameManager
     private List<Room> rooms = new List<Room>();
     private int currentRoom;
 
+    #region Scene
     public void LoadSceneAdditive(string sceneName)
     {
         SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
@@ -37,16 +38,14 @@ public class GameManager
         SceneManager.LoadScene(0, LoadSceneMode.Single);
         instance = null;
     }
+    #endregion
 
     #region MainUI
     public CameraSettings GetCameraSettings()
     {
         return GameObject.FindObjectOfType<CameraSettings>();
     }
-    public ScreenRedirection GetScreenRedirection()
-    {
-        return GameObject.FindObjectOfType<ScreenRedirection>();
-    }
+
     public GameObject GetMainUI()
     {
         return GameObject.Find("MainUI");
@@ -99,7 +98,29 @@ public class GameManager
     }
 
     #endregion
-
-
-
+}
+public class ScreenRedirection
+{
+    public static void GoToScene(string scene)
+    {
+        GameManager.Instance.LoadSceneAdditive(scene);
+        GameManager.Instance.SwitchRoom(0);
+    }
+    public static void Reload()
+    {
+        GameManager.Instance.ReloadGame();
+    }
+    public static void GoToScreen(GameObject screen)
+    {
+        screen.gameObject.SetActive(true);
+        GameManager.Instance.GetCameraSettings().FollowTarget(screen.transform);
+        GameManager.Instance.GetCameraSettings().LookAt(screen.transform);
+        Transform pPosition = screen.transform.Find("PlayerPosition");
+        if (pPosition)
+        {
+            Player player = GameObject.FindObjectOfType<Player>();
+            player.DisableInventory();
+            player.transform.position = pPosition.transform.position;
+        }
+    }
 }
