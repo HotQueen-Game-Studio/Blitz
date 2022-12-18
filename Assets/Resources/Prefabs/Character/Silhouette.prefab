@@ -344,7 +344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5509507176511665294
 Transform:
   m_ObjectHideFlags: 0
@@ -683,6 +683,7 @@ MonoBehaviour:
   animator: {fileID: 5509507178126544997}
   twisted: 0
   mail: {fileID: 254544847688168807, guid: 8753052084db857418eedeaf03bde14d, type: 3}
+  deadBirdInWorld: {fileID: 0}
 --- !u!1 &7710985382871918408
 GameObject:
   m_ObjectHideFlags: 0

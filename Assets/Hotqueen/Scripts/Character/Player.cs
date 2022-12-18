@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : Character
 {
@@ -35,6 +36,16 @@ public class Player : Character
     private void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
+        DisableCursor();
+    }
+
+    private void DisableCursor()
+    {
+        Cursor.visible = false;
+    }
+    private void EnableCursor()
+    {
+        Cursor.visible = true;
     }
 
     private void Update()
@@ -45,22 +56,25 @@ public class Player : Character
 
     private void RotateAim()
     {
-        //update indicator
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         aimDirection = (mousePos - (Vector2)this.transform.position).normalized;
 
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
 
-        Aim.transform.localPosition = aimDirection * 1;
+        float range = Vector2.Distance((Vector2)this.transform.position, mousePos);
+        range = Mathf.Clamp(range, 0, interactRange);
+
+        Aim.transform.localPosition = aimDirection * range;
+        Mouse.current.WarpCursorPosition(Camera.main.WorldToScreenPoint(Aim.transform.position));
         Aim.transform.eulerAngles = new Vector3(0, 0, angle);
-        
+
         if (Aim.transform.rotation.z > 0.5f || Aim.transform.rotation.z < -0.5f)
         {
-            
+
             itemHolder.transform.localScale = new Vector3(1, -1, 1);
         }
         else
-        {   
+        {
             itemHolder.transform.localScale = new Vector3(1, 1, 1);
         }
     }
@@ -80,7 +94,7 @@ public class Player : Character
         if (inventory.gameObject.activeInHierarchy && inventory.enabled && inventory.GetCurrentSlot().data != null)
         {
             Debug.Log("Using Item:" + inventory.GetCurrentSlot().data.name);
-            // itemHolder.animator.Play("MeleeAttack");
+            itemHolder.animator.Play("Use");
             itemHolder.GetItem().Use();
         }
         AnimateAim();
