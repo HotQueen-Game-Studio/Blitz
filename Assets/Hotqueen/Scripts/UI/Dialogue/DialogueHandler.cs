@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class DialogueHandler
 {
+    private const string RESOURCE_DIALOGUE_PATH = "Prefabs/Dialogues/";
     private DialogueBox dialoguePref;
     private DialogueBox dialogueInst = null;
 
@@ -26,29 +28,60 @@ public class DialogueHandler
         dialoguePref = Resources.Load<GameObject>("Prefabs/UI/DialogueBox").GetComponent<DialogueBox>();
     }
 
-    public void Chat(Character character, string[] messages)
+    public async void Chat(Dialogue dialogue)
     {
-        //for each message
-        //display on character´s position
-        if (!dialogueInst)
+        if (dialogue == null)
         {
-            Transform dialoguePoint = character.transform.Find("DialoguePoint");
-            if (dialoguePoint != null)
+            return;
+        }
+        foreach (DialogueItem item in dialogue.dialogueItems)
+        {
+            bool conDialogue = false;
+            foreach (Character character in item.characters)
             {
-                dialogueInst = GameObject.Instantiate<DialogueBox>(dialoguePref, dialoguePoint.position, dialoguePoint.rotation, dialoguePoint);
+                //for each message
+                //display on character´s position
+                if (!dialogueInst)
+                {
+
+                    if (GameObject.Find(character.name).TryGetComponent<Character>(out Character characterInstance))
+                    {
+                        Transform dialoguePoint = null;
+                        dialoguePoint = characterInstance.transform.Find("DialoguePoint");
+                        if (dialoguePoint != null)
+                        {
+                            dialogueInst = GameObject.Instantiate<DialogueBox>(dialoguePref, dialoguePoint.position, dialoguePoint.rotation, dialoguePoint);
+                        }
+                    }
+                    else
+                    {
+                        dialogueInst = GameObject.Instantiate<DialogueBox>(dialoguePref, character.transform.position, character.transform.rotation, character.transform);
+                    }
+                }
+
+
+                dialogueInst.SetText(item.messages);
+                dialogueInst.OnCompletedDialogue = () =>
+                {
+                    conDialogue = true;
+                };
+
+
             }
-            else
+
+            while (!conDialogue)
             {
-                dialogueInst = GameObject.Instantiate<DialogueBox>(dialoguePref, character.transform.position, character.transform.rotation, character.transform);
+                await Task.Delay(100);
             }
         }
-
-        dialogueInst.SetText(messages);
     }
-
-    public void Chat(Character character, string message)
+    public Dialogue GetDialogueObject(string name)
     {
-        string[] s = { message };
-        Chat(character, s);
+        Dialogue dialogue = Resources.Load<Dialogue>(RESOURCE_DIALOGUE_PATH + name);
+        if (!dialogue)
+        {
+            Debug.LogAssertion("No dialogue were found with " + name + " name.");
+        }
+        return dialogue;
     }
 }

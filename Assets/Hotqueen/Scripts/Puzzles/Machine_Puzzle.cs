@@ -21,8 +21,17 @@ public class Machine_Puzzle : Puzzle
         {
             completed = true;
             Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-            door.Locked = false;
-            DialogueHandler.Instance.Chat(player, "Did i unlocked something?");
+
+            if (door)
+            {
+                door.Locked = false;
+            }
+            else
+            {
+                Debug.LogAssertion("Door was not found.");
+            }
+
+            DialogueHandler.Instance.Chat(DialogueHandler.Instance.GetDialogueObject("FinishedMachinePuzzle"));
         }
     }
 
@@ -43,7 +52,7 @@ public class Machine_Puzzle : Puzzle
             }
             else
             {
-                DialogueHandler.Instance.Chat(player, "Maybe it´s the wrong item");
+                // DialogueHandler.Instance.Chat(player, "Maybe it´s the wrong item");
             }
         }
         else if (extraInfo.gameObject.TryGetComponent<Machine>(out Machine machine))

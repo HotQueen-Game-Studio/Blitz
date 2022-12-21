@@ -8,7 +8,7 @@ public class Mail_Puzzle : Puzzle
     [SerializeField] private Item deadBird;
     // [SerializeField] private Item reward;
 
-    public Mail_Puzzle(Item mail,Item deadBird)
+    public Mail_Puzzle(Item mail, Item deadBird)
     {
         this.mail = mail;
         this.deadBird = deadBird;
@@ -21,7 +21,7 @@ public class Mail_Puzzle : Puzzle
         {
             completed = true;
             Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-            DialogueHandler.Instance.Chat(player, "Did you say a bird?");
+            // DialogueHandler.Instance.Chat(player, "Did you say a bird?");
             deadBird.gameObject.SetActive(true);
         }
     }
@@ -46,7 +46,7 @@ public class Mail_Puzzle : Puzzle
             }
             else
             {
-                DialogueHandler.Instance.Chat(player, "Maybe it´s the wrong item");
+                // DialogueHandler.Instance.Chat(player, "Maybe it´s the wrong item");
             }
         }
         return false;

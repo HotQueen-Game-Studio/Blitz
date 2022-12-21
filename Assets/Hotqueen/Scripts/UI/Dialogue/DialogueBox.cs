@@ -15,6 +15,7 @@ public class DialogueBox : MonoBehaviour
     private int messageIndex = 0;
 
     private Action OnUpdate;
+    public Action OnCompletedDialogue;
 
     public void SetText(string msg)
     {
@@ -43,13 +44,13 @@ public class DialogueBox : MonoBehaviour
                     else
                     {
                         OnUpdate = null;
+                        OnCompletedDialogue?.Invoke();
                         GameObject.Destroy(this.gameObject);
                     }
                 }
 
             }
         };
-        // Debug.Log("Message:" + msg + " Time:" + timeLeft);
     }
 
     public void SetText(string[] msg)

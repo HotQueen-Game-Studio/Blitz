@@ -131,7 +131,7 @@ public class Player : Character
                 {
                     structure.Interact(this);
                 }
-                return;
+                // return;
             }
         }
         AnimateAim();
