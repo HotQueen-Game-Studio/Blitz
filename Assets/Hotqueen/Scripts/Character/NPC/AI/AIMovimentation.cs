@@ -9,11 +9,13 @@ using UnityEngine.AI;
 public class AIMovimentation : MonoBehaviour
 {
     public NavMeshAgent agent { private set; get; }
+  
     [SerializeField] private float destinationDistance = 0.2f;
     public Action OnPosReached;
     private Action OnUpdate;
+    
 
-    void Start()
+    void Awake()
     {
         // agent = this.gameObject.GetComponent<NavMeshAgent>();
         // agent.enabled = true;
@@ -46,7 +48,8 @@ public class AIMovimentation : MonoBehaviour
 
     public bool IsDestinationReached()
     {
-        if ((agent.destination - this.transform.position).sqrMagnitude <= destinationDistance)
+        // Debug.Log(Vector2.Distance(agent.destination,this.transform.position));
+        if (Vector2.Distance(agent.destination, this.transform.position) <= destinationDistance)
         {
             return true;
         }

@@ -1,23 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SimpleDoor : MonoBehaviour
 {
-    public bool locked = false;
+    [SerializeField] private bool locked = false;
+    public bool Locked
+    {
+        get
+        {
+            return locked;
+        }
+        set
+        {
+            locked = value;
+            // Debug.Log("locke " + locked);
+            if (this.gameObject.TryGetComponent<NavMeshObstacle>(out NavMeshObstacle navMeshObstacle))
+            {
+                navMeshObstacle.enabled = !locked;
+            }
+        }
+    }
     [SerializeField] private SpriteRenderer doorClosed;
     [SerializeField] private SpriteRenderer doorOpened;
 
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (IsCharacter(other.collider))
+        if (Collider2DValidation.IsCharacter(other.collider))
             OpenDoor();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (IsCharacter(other))
+        if (Collider2DValidation.IsCharacter(other))
         {
             OpenDoor();
         }
@@ -25,7 +42,7 @@ public class SimpleDoor : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (IsCharacter(other))
+        if (Collider2DValidation.IsCharacter(other))
         {
             CloseDoor();
         }
@@ -33,17 +50,17 @@ public class SimpleDoor : MonoBehaviour
 
     public void CloseDoor()
     {
-        Debug.Log("Closing door");
+        // Debug.Log("Closing door");
         doorOpened.gameObject.SetActive(false);
         doorClosed.gameObject.SetActive(true);
     }
     public void OpenDoor()
     {
-        doorOpened.gameObject.SetActive(true);
-        doorClosed.gameObject.SetActive(false);
+        if (locked == false)
+        {
+            doorOpened.gameObject.SetActive(true);
+            doorClosed.gameObject.SetActive(false);
+        }
     }
-    public bool IsCharacter(Collider2D col)
-    {
-        return col.attachedRigidbody && col.attachedRigidbody.GetComponent<Character>();
-    }
+
 }

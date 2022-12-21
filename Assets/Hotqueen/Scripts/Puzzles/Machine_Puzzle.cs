@@ -5,12 +5,14 @@ using UnityEngine;
 public class Machine_Puzzle : Puzzle
 {
     [SerializeField] private Item key;
-    [SerializeField] private GameObject reward;
+    [SerializeField] private SimpleDoor door;
+    [SerializeField] private Silhouette silhouette;
 
-    public Machine_Puzzle(Item key, GameObject reward)
+    public Machine_Puzzle(Item key, SimpleDoor door, Silhouette silhouette)
     {
         this.key = key;
-        this.reward = reward;
+        this.door = door;
+        this.silhouette = silhouette;
     }
 
     public override void Completed()
@@ -18,9 +20,18 @@ public class Machine_Puzzle : Puzzle
         if (!completed)
         {
             completed = true;
-            // GameObject.Instantiate<GameObject>(reward, new Vector3(), Quaternion.identity);
             Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-            DialogueHandler.Instance.Chat(player, "Puzzle Completed");
+
+            if (door)
+            {
+                door.Locked = false;
+            }
+            else
+            {
+                Debug.LogAssertion("Door was not found.");
+            }
+
+            DialogueHandler.Instance.Chat(DialogueHandler.Instance.GetDialogueObject("FinishedMachinePuzzle"));
         }
     }
 
@@ -41,13 +52,14 @@ public class Machine_Puzzle : Puzzle
             }
             else
             {
-                DialogueHandler.Instance.Chat(player, "Maybe it´s the wrong item");
+                // DialogueHandler.Instance.Chat(player, "Maybe it´s the wrong item");
             }
         }
         else if (extraInfo.gameObject.TryGetComponent<Machine>(out Machine machine))
         {
             if (machine.Resistance <= 0)
             {
+                silhouette.twisted = true;
                 Completed();
                 return true;
             }

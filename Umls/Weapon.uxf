@@ -1,0 +1,34 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>160</x><y>0</y><w>170</w><h>140</h></coordinates><panel_attributes>&lt;&lt;Abstract&gt;&gt;
+/*Weapon::Item*/ 
+--
+# damage : Int 
+# attackRange : Float
+# attackLayers : LayerMask 
+--
++Use() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>250</y><w>170</w><h>210</h></coordinates><panel_attributes>FireWeapon::Weapon
+--
+# damage : Int 
+# attackRange : Float
+# attackLayers : LayerMask 
+
+- reloadingSound : AudioClip
+- fireSound : AudioClip
+- clipSize : Int
+- clipAmmo : Int
+- fireEffect : EffectSystem
+--
+Use() : void
+Aim() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>300</x><y>250</y><w>170</w><h>170</h></coordinates><panel_attributes>MeleeWeapon:Weapon
+--
+# damage : Int 
+# attackRange : Float
+# attackLayers : LayerMask 
+
+- radius : Float
+- hitAudioSource: AudioSource
+- hitsound : AudioClip
+- hitEffect : EffectSystem
+--
+Use() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>130</y><w>170</w><h>140</h></coordinates><panel_attributes>lt=&lt;.
+</panel_attributes><additional_attributes>150;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>130</y><w>150</w><h>140</h></coordinates><panel_attributes>lt=&lt;.
+</panel_attributes><additional_attributes>10;10;130;120</additional_attributes></element></diagram>

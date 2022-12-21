@@ -1,0 +1,28 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>192</x><y>208</y><w>216</w><h>88</h></coordinates><panel_attributes>DialogueHandler
+--
+-dialoguePref:DialogueBox
+-instance:DialogueHandler
+/+Instance:DialogueHandler {readOnly}/
+--
++ Chat(dialogue:Dialogue):void 
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>192</x><y>336</y><w>216</w><h>128</h></coordinates><panel_attributes>DialogueBox::MonoBehaviour
+--
+- time : Float 
+- timeLeft : Float
+- tmpText : TMP_Text 
+- dialogue:Dialogue
+- messageIndex : Int
+--
++ Execute(dialogue:Dialogue):void
+- Update():void
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>224</y><w>136</w><h>64</h></coordinates><panel_attributes>Dialogue:ScriptableObject
+--
+Dialogue:Item</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>128</x><y>240</y><w>80</w><h>32</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>80;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>288</y><w>24</w><h>64</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>136</y><w>136</w><h>56</h></coordinates><panel_attributes>DialogueItem
+--
++ characters: Array&lt;Characters&gt;
++ messages: String
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>56</x><y>184</y><w>40</w><h>56</h></coordinates><panel_attributes>lt=&lt;-
+m1=n..1</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element></diagram>

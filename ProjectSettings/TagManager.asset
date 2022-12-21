@@ -3,17 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - CameraSettings
+  - NPC
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Room
   - Water
   - UI
   - Interactable
-  - NPC
-  - 
+  - Character
+  - UnsafeZone
   - 
   - 
   - 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Puzzle : ScriptableObject
+public abstract class Puzzle //: ScriptableObject
 {
     public bool completed { get; protected set; }
     public abstract void Started();

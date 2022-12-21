@@ -1,0 +1,7 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><element><id>UMLSpecialState</id><coordinates><x>90</x><y>300</y><w>20</w><h>20</h></coordinates><panel_attributes>type=initial</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>270</y><w>210</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+On Trigger In</panel_attributes><additional_attributes>190;20;10;20</additional_attributes></element><element><id>UMLState</id><coordinates><x>410</x><y>270</y><w>100</w><h>40</h></coordinates><panel_attributes>Transition
+(In)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>410</x><y>320</y><w>100</w><h>40</h></coordinates><panel_attributes>Transition
+(Out)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>320</y><w>210</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+On Trigger Out</panel_attributes><additional_attributes>190;20;10;20</additional_attributes></element><element><id>UMLSyncBarVertical</id><coordinates><x>220</x><y>280</y><w>20</w><h>70</h></coordinates><panel_attributes>template=txt
+title=titletext
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>90</x><y>300</y><w>160</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>140;10;10;10</additional_attributes></element></diagram>

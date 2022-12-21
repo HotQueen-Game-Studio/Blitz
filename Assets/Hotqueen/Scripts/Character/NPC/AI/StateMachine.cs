@@ -26,12 +26,12 @@ public class StateMachine<NonPlayableCharacter> where NonPlayableCharacter : NPC
         return false;
     }
 
-    public StateMachine(NonPlayableCharacter myOwner)
+    public StateMachine(NonPlayableCharacter myOwner, State<NonPlayableCharacter> currenState = null, State<NonPlayableCharacter> globalState = null)
     {
         this.myOwner = myOwner;
         this.previousState = null;
-        this.currentState = null;
-        this.globalState = null;
+        this.currentState = currenState;
+        this.globalState = globalState;
     }
 
     public void ChangeState(State<NonPlayableCharacter> state)

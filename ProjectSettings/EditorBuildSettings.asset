@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Hotqueen/Scenes/SampleScene.unity
+    path: Assets/Hotqueen/Scenes/Menu.unity
+    guid: ccd577452e7c810489f4c7b2526a117f
+  - enabled: 1
+    path: Assets/Hotqueen/Scenes/Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
