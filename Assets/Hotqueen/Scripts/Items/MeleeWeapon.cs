@@ -6,6 +6,12 @@ public class MeleeWeapon : Weapon
 {
     [SerializeField] private float radius;
     [SerializeField] private AudioClip hitSound;
+
+    public override void Equip(Character character)
+    {
+        base.Equip(character);
+    }
+
     public override void Use()
     {
         RaycastHit2D[] hits = Physics2D.CircleCastAll(owner.Aim.position, radius, owner.Aim.right, range, attackLayers);
@@ -14,22 +20,27 @@ public class MeleeWeapon : Weapon
             //play Sound
             itemAudioSource.clip = hitSound;
             itemAudioSource.Play();
-            //Screen shake if owner is player
-            if (owner is Player)
-            {
-                CameraSettings cameraSettings = FindObjectOfType<CameraSettings>();
-                cameraSettings.ShakeCamera(5, 2);
-            }
+
             //hit target
             Rigidbody2D rb2d = hit.collider.attachedRigidbody;
-            if (rb2d && rb2d.gameObject != owner)
+            if (rb2d && rb2d.gameObject.GetInstanceID() != owner.gameObject.GetInstanceID())
             {
-                if (rb2d.TryGetComponent<Character>(out Character character) && owner != character)
+                // Debug.Log(owner.name + " attacked " + rb2d.name + " with a " + Data.name);
+                // Debug.Log("Atacking");
+
+                //Screen shake if owner is player
+                if (owner is Player)
+                {
+                    CameraSettings cameraSettings = FindObjectOfType<CameraSettings>();
+                    cameraSettings.ShakeCamera(5, 0.5f);
+                }
+
+                if (rb2d.TryGetComponent<Character>(out Character character))
                 {
                     character.Attributes.Health -= damage;
                     Instantiate(character.HurtParticleEffect, hit.point, Quaternion.identity);
                 }
-                if (rb2d.TryGetComponent<Structure>(out Structure structure))
+                else if (rb2d.TryGetComponent<Structure>(out Structure structure))
                 {
                     structure.Resistance -= damage;
                 }
