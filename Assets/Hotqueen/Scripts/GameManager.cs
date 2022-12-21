@@ -97,6 +97,10 @@ public class GameManager
             rooms.Add(room);
     }
 
+    public void DisableCurrentRoom()
+    {
+        SetRoomActive(currentRoom, false);
+    }
     #endregion
 }
 public class ScreenRedirection

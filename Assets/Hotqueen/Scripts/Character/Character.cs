@@ -22,9 +22,13 @@ public abstract class Character : MonoBehaviour
         }
     }
     [SerializeField] protected LayerMask interactLayers;
+    public LayerMask InteractLayers { get { return interactLayers; } }
     [SerializeField] protected float interactRange = 1;
+    public float InteractRange { get { return interactLayers; } }
     [SerializeField] protected LayerMask attackLayers;
+    public LayerMask AttackLayers { get { return attackLayers; } }
     [SerializeField] protected float attackRange = 1;
+    public float AttackRange { get { return attackRange; } }
 
 
     protected void Awake()

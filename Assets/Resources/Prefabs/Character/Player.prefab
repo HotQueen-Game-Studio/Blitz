@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1671401399}
   - component: {fileID: 1671401400}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1350513191036460511}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DialoguePoint
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 1350513191605872912}
   - component: {fileID: 1350513191605872915}
   - component: {fileID: 1466083700}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -171,9 +171,9 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &1350513191605872926
 MonoBehaviour:
@@ -195,7 +195,7 @@ MonoBehaviour:
   speed: 5
 --- !u!95 &1350513191605872927
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -212,7 +212,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!82 &1350513191605872924
 AudioSource:
   m_ObjectHideFlags: 0
@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 1350513191972946136}
   - component: {fileID: 1350513191972946138}
   - component: {fileID: 1350513191972946139}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ItemHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,7 +404,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1350513191972946138
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -421,7 +421,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &1350513191972946139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 1350513192121994537}
   - component: {fileID: 1350513192121994550}
   - component: {fileID: 1350513192121994551}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -561,7 +561,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1350513192148687232}
   - component: {fileID: 5781877252866598528}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Slots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -625,7 +625,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1350513192155368948}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -659,7 +659,7 @@ GameObject:
   - component: {fileID: 1350513192261849639}
   - component: {fileID: 1350513192261849638}
   - component: {fileID: 772738656}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Aim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -735,7 +735,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &772738656
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -752,7 +752,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1350513192389681112
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,7 +763,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1350513192389681115}
   - component: {fileID: 1350513192389681114}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -846,7 +846,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1350513192740491077}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WalkEffectPoint
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -877,7 +877,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 848657580506727959}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -908,6 +908,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1350513192148687232}
     m_Modifications:
+    - target: {fileID: 717776263, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037187790120040341, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037187790917469611, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6037187791369627761, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -996,6 +1008,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slot (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6037187791369627766, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037187791808992191, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
 --- !u!224 &4716846440498726610 stripped
@@ -1010,6 +1030,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1350513192148687232}
     m_Modifications:
+    - target: {fileID: 717776263, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037187790120040341, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037187790917469611, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6037187791369627761, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1098,6 +1130,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slot (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6037187791369627766, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037187791808992191, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
 --- !u!224 &4716846440357028851 stripped
@@ -1112,6 +1152,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1350513192148687232}
     m_Modifications:
+    - target: {fileID: 717776263, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037187790120040341, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037187790917469611, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6037187791369627761, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1200,6 +1252,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slot (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6037187791369627766, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037187791808992191, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
 --- !u!224 &4716846440126945890 stripped
@@ -1214,6 +1274,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1350513192148687232}
     m_Modifications:
+    - target: {fileID: 717776263, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037187790120040341, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037187790917469611, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6037187791369627761, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1301,6 +1373,14 @@ PrefabInstance:
     - target: {fileID: 6037187791369627766, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
       propertyPath: m_Name
       value: Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037187791369627766, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037187791808992191, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9b64b62b6aad2f41abe95e82632d905, type: 3}

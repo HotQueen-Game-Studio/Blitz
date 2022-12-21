@@ -22,7 +22,7 @@ public class MeleeWeapon : Weapon
             }
             //hit target
             Rigidbody2D rb2d = hit.collider.attachedRigidbody;
-            if (rb2d)
+            if (rb2d && rb2d.gameObject != owner)
             {
                 if (rb2d.TryGetComponent<Character>(out Character character) && owner != character)
                 {

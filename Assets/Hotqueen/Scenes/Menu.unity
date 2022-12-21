@@ -208,7 +208,6 @@ GameObject:
   - component: {fileID: 137789199}
   - component: {fileID: 137789198}
   - component: {fileID: 137789197}
-  - component: {fileID: 137789196}
   - component: {fileID: 137789202}
   - component: {fileID: 137789201}
   m_Layer: 5
@@ -218,18 +217,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &137789196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 137789195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfd14fe6f34e85847b59420f8f70070d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &137789197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,6 +341,30 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2002917567}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2002917573}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
   afterExit:
     m_PersistentCalls:
@@ -1315,6 +1326,10 @@ PrefabInstance:
     - target: {fileID: 1350513192155368949, guid: 5f300750eaa2f474d84e432a96d85ea0, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350513192261849638, guid: 5f300750eaa2f474d84e432a96d85ea0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1350513192319636429, guid: 5f300750eaa2f474d84e432a96d85ea0, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2356,7 +2371,6 @@ GameObject:
   - component: {fileID: 2002917570}
   - component: {fileID: 2002917569}
   - component: {fileID: 2002917568}
-  - component: {fileID: 2002917572}
   - component: {fileID: 2002917574}
   - component: {fileID: 2002917573}
   m_Layer: 5
@@ -2449,18 +2463,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2002917572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002917567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfd14fe6f34e85847b59420f8f70070d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2002917573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2505,6 +2507,18 @@ MonoBehaviour:
   afterExit:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2002917573}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1179329247}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -2867,7 +2881,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2002917572}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ScreenRedirection, Assembly-CSharp
         m_MethodName: GoToScene
         m_Mode: 5

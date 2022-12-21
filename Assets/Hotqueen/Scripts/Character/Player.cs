@@ -65,9 +65,15 @@ public class Player : Character
         range = Mathf.Clamp(range, 0, interactRange);
 
         Aim.transform.localPosition = aimDirection * range;
-        Mouse.current.WarpCursorPosition(Camera.main.WorldToScreenPoint(Aim.transform.position));
+
+        // if (Vector2.Distance((Vector2)this.transform.position, mousePos) > range)
+        // {
+        //     Mouse.current.WarpCursorPosition(Camera.main.WorldToScreenPoint(this.transform.position Aim.transform.position));
+        // }
+
         Aim.transform.eulerAngles = new Vector3(0, 0, angle);
 
+        // this fix the item sprite rendered inverted texture
         if (Aim.transform.rotation.z > 0.5f || Aim.transform.rotation.z < -0.5f)
         {
 
@@ -105,21 +111,27 @@ public class Player : Character
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mousePos - (Vector2)this.transform.position).normalized;
-        RaycastHit2D hit = Physics2D.Raycast(this.transform.position, direction, interactRange, interactLayers);
-        if (hit && hit.collider.attachedRigidbody)
+        RaycastHit2D[] hits = Physics2D.RaycastAll(this.transform.position, direction, interactRange, interactLayers);
+
+        foreach (RaycastHit2D hit in hits)
         {
-            Rigidbody2D rb = hit.collider.attachedRigidbody;
-            if (rb.TryGetComponent<Item>(out Item item))
+
+            if (hit && hit.collider.attachedRigidbody && hit.collider.attachedRigidbody != this)
             {
-                item.Pick(this);
-            }
-            if (rb.TryGetComponent<Character>(out Character character))
-            {
-                character.Interacted();
-            }
-            if (rb.TryGetComponent<Structure>(out Structure structure))
-            {
-                structure.Interact(this);
+                Rigidbody2D rb = hit.collider.attachedRigidbody;
+                if (rb.TryGetComponent<Item>(out Item item))
+                {
+                    item.Pick(this);
+                }
+                if (rb.TryGetComponent<Character>(out Character character))
+                {
+                    character.Interacted();
+                }
+                if (rb.TryGetComponent<Structure>(out Structure structure))
+                {
+                    structure.Interact(this);
+                }
+                return;
             }
         }
         AnimateAim();

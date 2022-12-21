@@ -46,15 +46,16 @@ public class Silhouette : NPC
         GFX.color = Color.red;
     }
 
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (twisted && other.collider.attachedRigidbody && other.collider.attachedRigidbody.GetComponent<Player>())
-        {
-            GameManager.Instance.GetCameraSettings().FollowAndTargetCredits();
-            ScreenRedirection.GoToScreen(GameManager.Instance.GetCreditsUI());
-            Destroy(this.gameObject);
-        }
-    }
+    // void OnCollisionEnter2D(Collision2D other)
+    // {
+    //     if (twisted && other.collider.attachedRigidbody && other.collider.attachedRigidbody.GetComponent<Player>())
+    //     {
+    //         GameManager.Instance.DisableCurrentRoom();
+    //         GameManager.Instance.GetCameraSettings().FollowAndTargetCredits();
+    //         ScreenRedirection.GoToScreen(GameManager.Instance.GetCreditsUI());
+    //         Destroy(this.gameObject);
+    //     }
+    // }
 
     public override void Interacted()
     {
