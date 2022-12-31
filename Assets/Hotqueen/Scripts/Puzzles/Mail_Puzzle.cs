@@ -12,7 +12,6 @@ public class Mail_Puzzle : Puzzle
     {
         this.mail = mail;
         this.deadBird = deadBird;
-        Debug.Log(this.mail == null);
     }
 
     public override void Completed()
