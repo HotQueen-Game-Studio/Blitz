@@ -11,7 +11,7 @@ public class Player : Character
     public BlitzInputs blitzInputs { private set; get; }
     [SerializeField] private SimpleInventory inventory;
     [SerializeField] private Animator animator;
-    [SerializeField] private Animator aimAnimator;
+
 
     [SerializeField] private ItemHolder itemHolder;
     public ItemHolder ItemHolder { get { return itemHolder; } }
@@ -67,10 +67,9 @@ public class Player : Character
         if (inventory.gameObject.activeInHierarchy && inventory.enabled && inventory.GetCurrentSlot().data != null)
         {
             Debug.Log("Using Item:" + inventory.GetCurrentSlot().data.name);
-            itemHolder.animator.Play("Use");
+            // itemHolder.animator.Play("Use");
             itemHolder.GetItem().Use();
         }
-        AnimateAim();
     }
 
     public void DropItem()
@@ -83,11 +82,6 @@ public class Player : Character
             item.Drop();
             inventory.RemoveItem();
         }
-    }
-
-    public void AnimateAim()
-    {
-        aimAnimator.Play("AimClick");
     }
 
     public void EnableInventory()

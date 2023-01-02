@@ -31,6 +31,7 @@ public class Quest_DeliverItem : Quest
         if (character.TryGetComponent<Player>(out Player player) && player.ItemHolder.GetItem() != null &&
             player.ItemHolder.GetItem().Data.name == item.Data.name && other == this.target)
         {
+            player.Inventory.RemoveItem();
             CompleteQuest();
         }
     }

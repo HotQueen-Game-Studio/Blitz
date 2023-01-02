@@ -5,6 +5,11 @@ using UnityEngine;
 public class PlayerInteraction : InteractionComponent
 {
     [SerializeField] private Player player = null;
+    [SerializeField] private float itemHolderRange = 1;
+    [SerializeField] private Color interactionEnabled;
+    [SerializeField] private Color interactionDisabled;
+    [SerializeField] private Animator aimAnimator;
+
 
 
 
@@ -18,7 +23,7 @@ public class PlayerInteraction : InteractionComponent
 
     private void Update()
     {
-        RotateAim();
+        UpdateAim();
     }
 
 
@@ -45,10 +50,10 @@ public class PlayerInteraction : InteractionComponent
                 }
             }
         }
-        player.AnimateAim();
+        aimAnimator.Play("AimClick");
     }
 
-    private void RotateAim()
+    private void UpdateAim()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         aimDirection = (mousePos - (Vector2)this.transform.position).normalized;
@@ -56,21 +61,29 @@ public class PlayerInteraction : InteractionComponent
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
 
         float range = Vector2.Distance((Vector2)this.transform.position, mousePos);
-        range = Mathf.Clamp(range, 0, interactRange);
 
         player.Aim.transform.localPosition = aimDirection * range;
+        player.ItemHolder.transform.localPosition = aimDirection * itemHolderRange;
 
-        // if (Vector2.Distance((Vector2)this.transform.position, mousePos) > range)
-        // {
-        //     Mouse.current.WarpCursorPosition(Camera.main.WorldToScreenPoint(this.transform.position Aim.transform.position));
-        // }
+        if (player.Aim.TryGetComponent<SpriteRenderer>(out SpriteRenderer spriteRenderer))
+        {
+            if (range > interactRange)
+            {
+                aimAnimator.enabled = false;
+                spriteRenderer.color = interactionDisabled;
+            }
+            else
+            {
+                aimAnimator.enabled = true;
+                spriteRenderer.color = interactionEnabled;
+            }
+        }
 
-        player.Aim.transform.eulerAngles = new Vector3(0, 0, angle);
+        player.ItemHolder.transform.eulerAngles = new Vector3(0, 0, angle);
 
         // this fix the item sprite rendered inverted texture
-        if (player.Aim.transform.rotation.z > 0.5f || player.Aim.transform.rotation.z < -0.5f)
+        if (player.ItemHolder.transform.rotation.z > 0.5f || player.ItemHolder.transform.rotation.z < -0.5f)
         {
-
             player.ItemHolder.transform.localScale = new Vector3(1, -1, 1);
         }
         else
