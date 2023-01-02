@@ -21,10 +21,7 @@ public abstract class Character : MonoBehaviour
             return hurtParticleEffect;
         }
     }
-    [SerializeField] protected LayerMask interactLayers;
-    public LayerMask InteractLayers { get { return interactLayers; } }
-    [SerializeField] protected float interactRange = 1;
-    public float InteractRange { get { return interactLayers; } }
+
     [SerializeField] protected LayerMask attackLayers;
     public LayerMask AttackLayers { get { return attackLayers; } }
     [SerializeField] protected float attackRange = 1;
@@ -45,9 +42,5 @@ public abstract class Character : MonoBehaviour
         }
     }
 
-
-    public abstract void Interacted();
     public abstract void Attack();
-    public abstract void Interact();
-
 }

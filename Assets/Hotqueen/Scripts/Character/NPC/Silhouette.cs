@@ -9,7 +9,6 @@ public class Silhouette : NPC
     [SerializeField] private SpriteRenderer GFX;
     public new StateMachine<Silhouette> stateMachine { get; private set; }
     [SerializeField] private Animator animator;
-    [SerializeField] private Mail_Puzzle mail_Puzzle;
     public bool twisted;
     [SerializeField] private Item mail;
     [SerializeField] private Item deadBirdInWorld;
@@ -18,7 +17,6 @@ public class Silhouette : NPC
         // base.Awake();
         stateMachine = new StateMachine<Silhouette>(this, Idle.Instance, SilhouetteGlobalState.Instance);
         Attributes.HealthReduced += TwistSilhouette;
-        mail_Puzzle = new Mail_Puzzle(mail, deadBirdInWorld);
     }
 
     private void TwistSilhouette(int reduced, int normal)
@@ -56,9 +54,4 @@ public class Silhouette : NPC
     //         Destroy(this.gameObject);
     //     }
     // }
-
-    public override void Interacted()
-    {
-        mail_Puzzle.Validate<Player>(GameObject.FindObjectOfType<Player>());
-    }
 }

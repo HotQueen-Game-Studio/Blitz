@@ -11,10 +11,16 @@ public abstract class Quest : MonoBehaviour
     [SerializeField] protected UnityEvent OnCompleted;
     [SerializeField] protected UnityEvent OnStarted;
 
+    [SerializeField] private bool activeOnAwake = false;
+    public bool ActiveOnAwake { get { return activeOnAwake; } }
+
     public virtual void StartQuest()
     {
         OnStarted?.Invoke();
     }
-    public abstract void ValidateQuest();
-    public abstract void CompleteQuest();
+    public virtual void CompleteQuest()
+    {
+        OnCompleted?.Invoke();
+        Destroy(this.gameObject);
+    }
 }

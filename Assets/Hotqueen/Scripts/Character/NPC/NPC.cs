@@ -38,15 +38,6 @@ public class NPC : Character
         }
     }
 
-    public override void Interact()
-    {
-
-    }
-
-    public override void Interacted()
-    {
-
-    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
