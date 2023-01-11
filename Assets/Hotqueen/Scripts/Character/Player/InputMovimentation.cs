@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody))]
 public class InputMovimentation : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip[] stepClips;
     [SerializeField] private bool invertX;
     [SerializeField] private bool invertY;
+    [SerializeField] private Animator animator;
     private float currentStepTempo;
     BlitzInputs blitzInputs;
-    Rigidbody2D rb;
+    Rigidbody rb;
     //MOVEMENT
     [Range(0, 20)] public float speed = 5.0f;
     // [Range(0,20)]public float rotateSpeed = 10.0f;
@@ -21,7 +22,7 @@ public class InputMovimentation : MonoBehaviour
     private void Awake()
     {
         blitzInputs = new BlitzInputs();
-        rb = this.gameObject.GetComponent<Rigidbody2D>();
+        rb = this.gameObject.GetComponent<Rigidbody>();
     }
 
     void OnEnable()
@@ -41,7 +42,7 @@ public class InputMovimentation : MonoBehaviour
 
         direction.y = invertY ? -input.y : input.y;
         direction.x = invertX ? -input.x : input.x;
-        
+
         Move(direction, speed);
         // Rotate(blitzInputs.Player.Look.ReadValue<Vector2>());
     }
@@ -62,6 +63,8 @@ public class InputMovimentation : MonoBehaviour
 
     private void Move(Vector2 direction, float speed)
     {
-        rb.velocity = direction * speed;
+        Vector3 movimentation = new Vector3(direction.x * speed, rb.velocity.y, direction.y * speed);
+        rb.velocity = movimentation;
+        animator.SetFloat("rbVelMag", direction.sqrMagnitude);
     }
 }

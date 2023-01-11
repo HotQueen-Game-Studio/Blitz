@@ -45,9 +45,10 @@ public class SimpleInventory : MonoBehaviour
         {
             GameObject itemPrefab = Instantiate(Resources.Load<GameObject>("Prefabs/Items/" + slots[curSlot].data.name), itemHolder.transform.position, new Quaternion(), itemHolder.transform);
             Item item = itemPrefab.GetComponent<Item>();
+            item.SetCollision(false);
             item.Equip(player);
-            Rigidbody2D itemrb = item.GetComponent<Rigidbody2D>();
-            itemrb.simulated = false;
+            Rigidbody itemrb = item.GetComponent<Rigidbody>();
+            itemrb.isKinematic = true;
         }
     }
 

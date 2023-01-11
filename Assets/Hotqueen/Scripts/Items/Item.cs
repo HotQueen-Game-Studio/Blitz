@@ -24,6 +24,17 @@ public class Item : MonoBehaviour
 
         Destroy(this.gameObject);
     }
+
+    public void SetCollision(bool value)
+    {
+        foreach (Transform t in this.transform)
+        {
+            if (t.gameObject.TryGetComponent<Collider>(out Collider collider))
+            {
+                collider.isTrigger = !value;
+            }
+        }
+    }
     public virtual void Drop()
     {
 

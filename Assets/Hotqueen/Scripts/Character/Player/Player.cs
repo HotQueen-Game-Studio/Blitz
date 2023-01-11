@@ -5,18 +5,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
 using UnityEngine.InputSystem;
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody))]
 public class Player : Character
 {
     public BlitzInputs blitzInputs { private set; get; }
     [SerializeField] private SimpleInventory inventory;
-    [SerializeField] private Animator animator;
 
 
     [SerializeField] private ItemHolder itemHolder;
     public ItemHolder ItemHolder { get { return itemHolder; } }
-
-    private Rigidbody2D rb;
 
     public SimpleInventory Inventory { get { return inventory; } }
 
@@ -26,15 +23,10 @@ public class Player : Character
         blitzInputs = new BlitzInputs();
         blitzInputs.Player.Fire.performed += ctx => Attack();
         blitzInputs.Player.Drop.performed += ctx => DropItem();
-        // OnDeath += () =>
-        // {
-        //     SceneManager.LoadScene("Menu");
-        // };
     }
 
     private void Start()
     {
-        rb = this.GetComponent<Rigidbody2D>();
         DisableCursor();
     }
 
@@ -45,11 +37,6 @@ public class Player : Character
     private void EnableCursor()
     {
         Cursor.visible = true;
-    }
-
-    private void Update()
-    {
-        animator.SetFloat("rbVelMag", rb.velocity.SqrMagnitude());
     }
 
     private void OnEnable()
