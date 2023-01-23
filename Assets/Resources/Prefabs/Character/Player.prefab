@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 1350513191605872912}
   - component: {fileID: 1350513191605872915}
   - component: {fileID: 1466083700}
+  - component: {fileID: 817141085}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -326,7 +327,7 @@ MonoBehaviour:
     stamina: 0
     mind: 0
     damage: 0
-  aim: {fileID: 0}
+  aim: {fileID: 1350513192261849639}
   hurtParticleEffect: {fileID: 0}
   attackLayers:
     serializedVersion: 2
@@ -334,7 +335,6 @@ MonoBehaviour:
   attackRange: 2
   inventory: {fileID: 1350513192121994551}
   animator: {fileID: 1350513191605872927}
-  aimAnimator: {fileID: 772738656}
   itemHolder: {fileID: 1350513191972946139}
 --- !u!114 &1350513191605872915
 MonoBehaviour:
@@ -365,6 +365,27 @@ MonoBehaviour:
   silhouettePrefab: {fileID: 5509507178126545017, guid: 90c156a6208c5b444aff1311d8e657e2, type: 3}
   silhouetteInstance: {fileID: 0}
   offset: {x: 0, y: 6}
+--- !u!114 &817141085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350513191605872923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ce42c1e92a1879f83e6b63a13c278b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactRange: 2
+  interactLayers:
+    serializedVersion: 2
+    m_Bits: 192
+  player: {fileID: 1350513191605872912}
+  itemHolderRange: 1
+  interactionEnabled: {r: 0, g: 0, b: 0, a: 1}
+  interactionDisabled: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+  aimAnimator: {fileID: 772738656}
 --- !u!1 &1350513191972946137
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +427,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350513191972946137}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: be3f283eff96faa4085f2f4b07d6eef5, type: 2}
   m_CullingMode: 0
