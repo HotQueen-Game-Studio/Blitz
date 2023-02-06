@@ -68,6 +68,32 @@ public class SimpleInventory : MonoBehaviour
         UpdateItemHolder();
     }
 
+    public ItemData[] GetAllItems()
+    {
+        List<ItemData> itemDatas = new List<ItemData>();
+        foreach (InventorySlot slot in slots)
+        {
+            if (slot.data != null)
+            {
+                itemDatas.Add(slot.data);
+            }
+        }
+
+        return itemDatas.ToArray();
+    }
+
+    public bool HasItem(ItemData item)
+    {
+        foreach (ItemData data in GetAllItems())
+        {
+            if (item.name == data.name)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void AddItemInAvailableSlot(ItemData item)
     {
         foreach (InventorySlot slot in slots)

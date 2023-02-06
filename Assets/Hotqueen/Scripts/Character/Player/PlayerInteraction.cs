@@ -15,7 +15,6 @@ public class PlayerInteraction : InteractionComponent
 
     private Vector2 aimDirection;
 
-
     private void Start()
     {
         player.blitzInputs.Player.Interact.performed += ctx => Interact();
@@ -23,7 +22,10 @@ public class PlayerInteraction : InteractionComponent
 
     private void Update()
     {
-        UpdateAim();
+        if (player.Aim.gameObject.activeInHierarchy)
+        {
+            UpdateAim();
+        }
     }
 
 
@@ -35,7 +37,7 @@ public class PlayerInteraction : InteractionComponent
 
         foreach (RaycastHit2D hit in hits)
         {
-
+            Debug.Log(hit.collider.name);
             if (hit && hit.collider.attachedRigidbody && hit.collider.attachedRigidbody != this)
             {
                 Rigidbody2D rb = hit.collider.attachedRigidbody;

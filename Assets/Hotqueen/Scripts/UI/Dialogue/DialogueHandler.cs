@@ -23,6 +23,9 @@ public class DialogueHandler
         }
     }
 
+    private List<DialogueItem> dialogueItems = new List<DialogueItem>();
+    private bool conDialogue = true;
+
     private DialogueHandler()
     {
         dialoguePref = Resources.Load<GameObject>("Prefabs/UI/DialogueBox").GetComponent<DialogueBox>();
@@ -34,38 +37,42 @@ public class DialogueHandler
         {
             return;
         }
-        foreach (DialogueItem item in dialogue.dialogueItems)
-        {
-            bool conDialogue = false;
-            foreach (Character character in item.characters)
-            {
-                //for each message
-                //display on character´s position
-                if (!dialogueInst)
-                {
 
-                    if (GameObject.Find(character.name).TryGetComponent<Character>(out Character characterInstance))
+        dialogueItems.AddRange(dialogue.dialogueItems);
+        foreach (DialogueItem item in dialogueItems)
+        {
+            if (conDialogue)
+            {
+                conDialogue = false;
+                foreach (Character character in item.characters)
+                {
+                    //for each message
+                    //display on character´s position
+                    if (!dialogueInst)
                     {
-                        Transform dialoguePoint = null;
-                        dialoguePoint = characterInstance.transform.Find("DialoguePoint");
-                        if (dialoguePoint != null)
+
+                        if (GameObject.Find(character.name).TryGetComponent<Character>(out Character characterInstance))
                         {
-                            dialogueInst = GameObject.Instantiate<DialogueBox>(dialoguePref, dialoguePoint.position, dialoguePoint.rotation, dialoguePoint);
+                            Transform dialoguePoint = null;
+                            dialoguePoint = characterInstance.transform.Find("DialoguePoint");
+                            if (dialoguePoint != null)
+                            {
+                                dialogueInst = GameObject.Instantiate<DialogueBox>(dialoguePref, dialoguePoint.position, dialoguePoint.rotation, dialoguePoint);
+                            }
+                        }
+                        else
+                        {
+                            dialogueInst = GameObject.Instantiate<DialogueBox>(dialoguePref, character.transform.position, character.transform.rotation, character.transform);
                         }
                     }
-                    else
+
+
+                    dialogueInst.SetText(item.messages);
+                    dialogueInst.OnCompletedDialogue = () =>
                     {
-                        dialogueInst = GameObject.Instantiate<DialogueBox>(dialoguePref, character.transform.position, character.transform.rotation, character.transform);
-                    }
+                        conDialogue = true;
+                    };
                 }
-
-
-                dialogueInst.SetText(item.messages);
-                dialogueInst.OnCompletedDialogue = () =>
-                {
-                    conDialogue = true;
-                };
-
 
             }
 
@@ -74,6 +81,7 @@ public class DialogueHandler
                 await Task.Delay(100);
             }
         }
+        dialogueItems = new List<DialogueItem>();
     }
     public Dialogue GetDialogueObject(string name)
     {

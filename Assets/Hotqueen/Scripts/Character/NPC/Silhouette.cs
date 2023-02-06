@@ -9,7 +9,7 @@ public class Silhouette : NPC
     [SerializeField] private SpriteRenderer GFX;
     public new StateMachine<Silhouette> stateMachine { get; private set; }
     [SerializeField] private Animator animator;
-    public bool twisted;
+    [SerializeField] public bool twisted;
     [SerializeField] private Item mail;
     [SerializeField] private Item deadBirdInWorld;
     private new void Awake()
@@ -42,6 +42,7 @@ public class Silhouette : NPC
     {
         GFX.sprite = RedSilhouette;
         GFX.color = Color.red;
+        twisted = true;
     }
 
     // void OnCollisionEnter2D(Collision2D other)

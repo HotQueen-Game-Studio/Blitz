@@ -27,11 +27,11 @@ public class QuestHandler : MonoBehaviour
                 quest.gameObject.SetActive(true);
                 quest.StartQuest();
             }
-            else
-            {
-                Debug.LogWarning("Quest not found");
-            }
         }
+    }
+    public void BeginQuest(Quest quest)
+    {
+        BeginQuest(quest.name);
     }
 
     public void InitQuestList()

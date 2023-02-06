@@ -5,32 +5,35 @@ using UnityEngine;
 public class Quest_DeliverItem : Quest
 {
     [SerializeField] private Item item;
-    [SerializeField] private InteractionComponent character;
     [SerializeField] private GameObject target;
 
     public override void StartQuest()
     {
-        DialogueHandler.Instance.Chat(DialogueHandler.Instance.GetDialogueObject("StartedMachinePuzzle"));
-        character.OnInteract += ValidateQuest;
+        if (GameObject.FindObjectOfType<Player>().TryGetComponent<InteractionComponent>(out InteractionComponent component))
+        {
+            component.OnInteract += ValidateQuest;
+        }
+
         base.StartQuest();
     }
 
     public override void CompleteQuest()
     {
-        DialogueHandler.Instance.Chat(DialogueHandler.Instance.GetDialogueObject("FinishedMachinePuzzle"));
         base.CompleteQuest();
     }
 
     public void ValidateQuest(GameObject character, GameObject other)
     {
-        if (character == null || other == null)
+
+        if (character == null && other == null)
         {
             return;
         }
-
+        Debug.Log("validating quest " + this.name);
         if (character.TryGetComponent<Player>(out Player player) && player.ItemHolder.GetItem() != null &&
             player.ItemHolder.GetItem().Data.name == item.Data.name && other == this.target)
         {
+
             player.Inventory.RemoveItem();
             CompleteQuest();
         }

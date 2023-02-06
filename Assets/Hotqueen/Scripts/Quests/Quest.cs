@@ -23,4 +23,12 @@ public abstract class Quest : MonoBehaviour
         OnCompleted?.Invoke();
         Destroy(this.gameObject);
     }
+    public virtual void ExecuteSpeach(Dialogue dialogue)
+    {
+        DialogueHandler.Instance.Chat(dialogue);
+    }
+    public virtual void ExecuteSpeach(string dialogue)
+    {
+        ExecuteSpeach(DialogueHandler.Instance.GetDialogueObject("StartedMachinePuzzle"));
+    }
 }
